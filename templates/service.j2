@@ -23,5 +23,7 @@ StandardError=journal
 ExecStart={{ systemd_service_command }} {{ systemd_service_params }}
 Restart=always
 
+ExecReload=/bin/kill -HUP $MAINPID
+
 [Install]
 WantedBy=multi-user.target
