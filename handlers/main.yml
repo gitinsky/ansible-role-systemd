@@ -1,12 +1,12 @@
 ---
-- name: restart {{ systemd_service_name }}
+- name: systemd restart {{ systemd_service_name }}
   service: name={{ systemd_service_name }} state=restarted
 
-- name: reload {{  systemd_service_name }}
+- name: systemd reload {{  systemd_service_name }}
   service: name={{ systemd_service_name }} state=reloaded
 
-- name: start {{ systemd_service_name }}
+- name: systemd start {{ systemd_service_name }}
   service: name={{ systemd_service_name }} state=started
 
-- name: enable {{ systemd_service_name }}
+- name: systemd enable {{ systemd_service_name }}
   service: name={{ systemd_service_name }} enabled=yes
