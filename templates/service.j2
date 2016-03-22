@@ -1,0 +1,27 @@
+[Unit]
+Description={{ systemd_service_description }}
+After=network.target
+Requires=networking.service
+
+[Service]
+Type=simple
+User={{ systemd_service_user }}
+Group={{ systemd_service_user }}
+{% for k,v in systemd_service_env.iteritems() %}
+Environment={{ k }}="{{ v }}"
+{% endfor %}
+
+{% if systemd_service_config is defined %}
+EnvironmentFile={{ '-' if systemd_service_config_is_optional else '' }}{{ systemd_service_config }}
+{% endif %}
+
+WorkingDirectory={{ systemd_service_workdir }}
+
+StandardOutput=journal
+StandardError=journal
+
+ExecStart={{ systemd_service_command }} {{ systemd_service_params }}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

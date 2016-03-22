@@ -1,0 +1,10 @@
+- template: src=service.j2 dest=/lib/systemd/system/{{ systemd_service_name }}.service
+  notify:
+      - start {{ systemd_service_name }}
+      - enable {{ systemd_service_name }}
+      - restart {{ systemd_service_name }}
+  register: service_config
+
+- name: reload service config
+  shell: systemctl daemon-reload
+  when: service_config|changed

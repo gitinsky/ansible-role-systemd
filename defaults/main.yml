@@ -1,0 +1,10 @@
+systemd_service_workdir: "{{ systemd_service_command| dirname }}"
+systemd_service_description: "{{ systemd_service_name }}"
+systemd_service_env: {}
+systemd_service_config_is_optional: no
+
+# systemd_service_config
+# systemd_service_user
+# systemd_service_command
+# systemd_service_params
+# systemd_service_env
