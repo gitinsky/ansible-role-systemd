@@ -7,6 +7,7 @@
 
 - name: enable {{ systemd_service_name }} service
   service: name={{ systemd_service_name }} enabled=yes state=started
+  ignore_errors: True
 
 - name: reload service config
   shell: systemctl daemon-reload
