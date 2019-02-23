@@ -1,4 +1,5 @@
-- template: src=service.j2 dest=/etc/systemd/system/{{ systemd_service_name }}.service
+- name: put a systemd unit file
+  template: src=service.j2 dest=/etc/systemd/system/{{ systemd_service_name }}.service
   notify:
       - systemd start {{ systemd_service_name }}
       - systemd enable {{ systemd_service_name }}
@@ -10,5 +11,4 @@
   ignore_errors: True
 
 - name: reload service config
-  shell: systemctl daemon-reload
-  when: service_config|changed
+  systemd: daemon_reload=yes
