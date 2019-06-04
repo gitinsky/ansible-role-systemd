@@ -1,4 +1,4 @@
-# systemd sctipr tole
+# systemd sctipt role
 
 Basicly designed for running go apps.
 
